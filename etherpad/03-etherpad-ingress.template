@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  name: etherpad-ingress
+spec:
+  rules:
+  - host: collaboration.PUBLIC_IP.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: etherpad
+          servicePort: 9001
+        path: /

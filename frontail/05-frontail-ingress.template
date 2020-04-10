@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  name: frontail-ingress
+spec:
+  rules:
+  - host: bash-history.PUBLIC_IP.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: frontail
+          servicePort: 9001
+        path: /

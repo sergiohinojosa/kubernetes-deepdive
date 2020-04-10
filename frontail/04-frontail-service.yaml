@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontail
+  name: frontail
+spec:
+  ports:
+  - port: 9001
+    protocol: TCP
+    targetPort: 9001
+  selector:
+    app: frontail
+  type: NodePort

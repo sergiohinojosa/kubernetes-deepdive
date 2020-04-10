@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontail
+  name: frontail
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontail
+  template:
+    metadata:
+      labels:
+        app: frontail
+    spec:
+      volumes:
+        - name: frontail-storage
+          persistentVolumeClaim:
+            claimName: data-claim
+      containers:
+        - image: mthenw/frontail
+          name: frontail
+          ports:
+            - containerPort: 9001
+          command:
+            - "/frontail/docker-entrypoint.sh"
+          args:
+            - "-t"
+            - "default"
+            - "-n"
+            - "500"
+            - "/data/history.log"
+          volumeMounts:
+            - mountPath: "/data"
+              name: frontail-storage
+          resources: {}
