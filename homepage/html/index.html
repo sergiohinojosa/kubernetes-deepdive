@@ -1,49 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>particles.js</title>
+  <title>Kubernetes DeepDive Workshop</title>
   <meta name="description" content="Kubernetes Workshop">
   <meta name="author" content="Sergio Hinojosa" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/48/000000/kubernetes.png">
 </head>
+
 <body>
 
-<!-- Particles Js Library from VincentGarreau
-  https://github.com/VincentGarreau/particles.js/
--->
-<div class="count-particles">
-  <span class="js-count-particles">--</span> particles
-</div>
+  <nav class="nav">
+    <a class="nav__brand" href="https://www.dynatrace.com/">
+      <img class="js-disable-lazy" src="https://dt-cdn.net/images/dynatrace-logo-rgb-cnh-800x142px-8ad53ac283.svg"
+        alt="Software Intelligence for the Enterprise Cloud" width="150">
+    </a>
+    <div class="nav__list">
+      <div class="count-particles">
+        <span class="js-count-particles">--</span> particles
+      </div>
+    </div>
+  </nav>
 
-<!-- particles.js container -->
-<div id="particles-js"></div>
+  <div class="titulo">
+    <p>Welcome to your</p>
+    <img src="https://jhooq.com/wp-content/uploads/2019/06/Webinar_K8S101_K8slogo.png" width="250px" />
+    <p>DeepDive training</p>
+  </div>
 
-<!-- scripts -->
-<script src="js/particles.min.js"></script>
-<script src="js/app.js"></script>
-<!-- stats.js -->
-<script src="js/lib/stats.js"></script>
-<script>
-  var count_particles, stats, update;
-  stats = new Stats;
-  stats.setMode(0);
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.left = '0px';
-  stats.domElement.style.top = '0px';
-  document.body.appendChild(stats.domElement);
-  count_particles = document.querySelector('.js-count-particles');
-  update = function() {
-    stats.begin();
-    stats.end();
-    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-    }
+
+  <!-- particles.js container -->
+  <div id="particles-js"></div>
+
+  <!-- scripts -->
+  <script src="js/particles.min.js"></script>
+  <script src="js/app.js"></script>
+  <!-- stats.js -->
+  <script src="js/lib/stats.js"></script>
+  <script>
+    var count_particles, stats, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.right = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function () {
+      stats.begin();
+      stats.end();
+      if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+      }
+      requestAnimationFrame(update);
+    };
     requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-</script>
+  </script>
 
 </body>
 </html>

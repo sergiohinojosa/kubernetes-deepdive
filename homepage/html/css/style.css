@@ -27,7 +27,7 @@ li{list-style:none}
 html,body{ 
 	width:100%;
 	height:100%;
-	background:#111;
+
 }
 
 html{
@@ -88,9 +88,105 @@ canvas{
 #particles-js{
   width: 100%;
   height: 100%;
-  background-color: #140e69;
+  background-color: #690e38;
   background-image: url('');
+  background-size: cover;
+  background: #0f1419 url(https://dt-cdn.net/images/error-pages-background-1920-375767b49f.png) no-repeat center center;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+}
+
+
+/* Navigation */
+.nav {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 80px;
+  z-index: 10000;
+  transition: all .2s ease;
+}
+
+.nav--slim {
+  height: 54px;
+  background-color: #0f1419;
+}
+
+.nav__brand,
+.nav__list {
+  position: absolute;
+}
+
+.nav__brand {
+  left: 0;
+  width: 146px;
+  display: flex;
+  height: 54px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+  margin-left: 16px;
+  transition: all .2s ease;
+}
+
+.nav__brand--slim {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.nav__list {
+  right: 0;
+  height: 40px;
+  width: 70px;
+  display: flex;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  transition: all .2s ease;
+}
+
+.nav__list--slim {
+  height: 30px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+
+.nav__button {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  color: #0f1419;
+  background-color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.titulo {
+  /*
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  */
+  width: 400px;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  margin-left: -100px;
+  font-size: medium;
+  font-style: normal;
+  color:black ; 
+  font-size: xx-large; 
+  font-weight: bolder; 
+  text-align: center
+  /*half the size of width*/
+
 }

@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: istio-ingress-http
-  namespace: istio-system
+  name: homepage-ingress
 spec:
   rules:
-  - http:
+  - host: homepage.cluster.domain
+    http:
       paths:
       - backend:
-          serviceName: istio-ingressgateway
+          serviceName: homepage
           servicePort: 80
         path: /
