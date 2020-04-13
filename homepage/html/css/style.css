@@ -183,9 +183,9 @@ canvas{
   margin-left: -100px;
   font-size: medium;
   font-style: normal;
-  color:black ; 
+  color: white ; 
   font-size: xx-large; 
-  font-weight: bolder; 
+  font-weight: lighter; 
   text-align: center
   /*half the size of width*/
 
