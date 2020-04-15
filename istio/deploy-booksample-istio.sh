@@ -1,18 +1,13 @@
-#!/bin/bash
+#!/bin/bash +x
 # Set up of the Book application of istio for Microk8s
 # https://istio.io/docs/examples/bookinfo/
 
-# We enable istio and when prompted if enable TLS authentication between sidecars injection we say 'N'o
-echo 'N;' | microk8s.enable istio
 
-echo "We sleep for a minute to give time to istio to initiate..." 
-sleep 1m
-
-# We create a namespace for the application
+echo "We create a book namespace for the application"
 kubectl create ns book
-# We enable the injection in the book namespace
+echo "enable the isito injection in the book namespace"
 kubectl label namespace book istio-injection=enabled
-# we install the book 
+echo "deploy the book app"
 kubectl -n book apply -f manifests/ 
 
 # We print out the http NodePort of the Istio IngressGateway with the URL of the app.
