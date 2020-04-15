@@ -1,48 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: k8-ingress
-  namespace: kube-system
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"          
-spec:
-  rules:
-  - host: kubernetes.PUBLIC_IP.nip.io
-    http:
-      paths:
-      - backend:
-          serviceName: kubernetes-dashboard
-          servicePort: 443
-        path: /
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: tomcat-ingress
+  name: mywebserver-ingress
   namespace: default
 spec:
   rules:
-  - host: tomcat.PUBLIC_IP.nip.io
+  - host: mywebserver.domain.placeholder
     http:
       paths:
       - backend:
-          serviceName: tomcat
-          servicePort: 8080
-        path: /
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: grafana-ingress
-  namespace: kube-system
-spec:
-  rules:
-  - host: grafana.PUBLIC_IP.nip.io
-    http:
-      paths:
-      - backend:
-          serviceName: monitoring-grafana
+          serviceName: mywebserver
           servicePort: 80
         path: /

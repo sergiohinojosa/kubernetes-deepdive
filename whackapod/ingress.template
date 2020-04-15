@@ -6,7 +6,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: whackapod.PUBLIC_IP.nip.io
+  - host: whackapod.domain.placeholder
     http:
       paths:
       - path: /api/

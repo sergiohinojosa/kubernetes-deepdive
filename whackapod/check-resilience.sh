@@ -1,9 +1,11 @@
 #!/bin/bash
 echo "Usage: sh check-resilience.sh "
 echo "Press [CTRL+C] to stop.."
-PUBLIC_IP=$(curl -s ifconfig.me)
+export PUBLIC_IP=$(curl -s ifconfig.me) 
+PUBLIC_IP_AS_DOM=$(echo $PUBLIC_IP | sed 's~\.~-~g')
+export DOMAIN="${PUBLIC_IP_AS_DOM}.nip.io"
 
-url="http://whackapod.$PUBLIC_IP.nip.io/api/"
+url="http://whackapod.$DOMAIN/api/"
 
 contentType="Content-Type: application/json"
 dtHeaderGet="x-dynatrace-test: LSN=check-whackapod-service.sh;LTN=CheckService;TSN=Check health of service;"
