@@ -5,7 +5,7 @@ metadata:
   name: frontail-ingress
 spec:
   rules:
-  - host: bash-history.domain.placeholder.nip.io
+  - host: bash-history.domain.placeholder
     http:
       paths:
       - backend:
