@@ -42,6 +42,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt"    
 spec:
   rules:
   - host: grafana.domain.placeholder
@@ -51,6 +52,10 @@ spec:
           serviceName: monitoring-grafana
           servicePort: 80
         path: /
+  tls:
+  - hosts:
+    - grafana.domain.placeholder
+    secretName: grafana-tls
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
