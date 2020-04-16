@@ -17,13 +17,13 @@ kubectl apply -f clusterissuer.yaml
 
 
 printf "\nDeploy NGINX for the Certificate validation of the domain\n"
-printf "The Ingress is declared in one route of the ingress-ssl-istio\n"
+printf "The Ingress is declared in one route of the ingress-istio\n"
 kubectl -n istio-system create deploy nginx --image=shinojosa/k8deepdive
 kubectl -n istio-system expose deploy nginx --port=80 --type=NodePort
 
 printf "\nRouting Istio via Nginx Ingress, create secret and certificates for the valid endpoints\n"
 
-cat ingress-ssl-istio.yaml | \
+cat ingress-istio.yaml | \
   sed 's~domain.placeholder~'"$DOMAIN"'~' > ./gen/ingress-istio.yaml
 
 # Deploy ingress with rules to domains and ingress-gateway. Create secret and certificate
