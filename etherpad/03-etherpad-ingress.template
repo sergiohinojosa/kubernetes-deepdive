@@ -5,7 +5,7 @@ metadata:
   name: etherpad-ingress
 spec:
   rules:
-  - host: collaboration.PUBLIC_IP.nip.io
+  - host: collaboration.domain.placeholder
     http:
       paths:
       - backend:
