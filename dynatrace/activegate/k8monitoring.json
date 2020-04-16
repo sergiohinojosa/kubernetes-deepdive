@@ -18,5 +18,5 @@
             "active": true
         }
     ],
-    "certificateCheckEnabled": true
+    "certificateCheckEnabled": false
 }
