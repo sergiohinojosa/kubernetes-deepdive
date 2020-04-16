@@ -16,7 +16,9 @@ export PROMPT_COMMAND='history -a'
 ln  ~/.bash_history /tmp/pv-data/history.log
 # Set the public ip for the ingress rule.
 export PUBLIC_IP=$(curl -s ifconfig.me) 
-sed "s/PUBLIC_IP/$PUBLIC_IP/g" 05-frontail-ingress.template > 05-frontail-ingress.yaml
+PUBLIC_IP_AS_DOM=$(echo $PUBLIC_IP | sed 's~\.~-~g')
+export DOMAIN="${PUBLIC_IP_AS_DOM}.nip.io"
+sed 's~domain.placeholder~'"$DOMAIN"'~' 05-frontail-ingress.template > 05-frontail-ingress.yaml
 kubectl apply -f .
 echo "Frontail service available at:"
 kubectl get ing frontail-ingress
