@@ -24,10 +24,10 @@ kubectl -n istio-system expose deploy nginx --port=80 --type=NodePort
 printf "\nRouting Istio via Nginx Ingress, create secret and certificates for the valid endpoints\n"
 
 cat ingress-ssl-istio.yaml | \
-  sed 's~domain.placeholder~'"$DOMAIN"'~' > ./gen/ingress-ssl-istio.yaml
+  sed 's~domain.placeholder~'"$DOMAIN"'~' > ./gen/ingress-istio.yaml
 
 # Deploy ingress with rules to domains and ingress-gateway. Create secret and certificate
-kubectl apply -f gen/ingress-ssl-istio.yaml
+kubectl apply -f gen/ingress-istio.yaml
 
 # LetsEncrypt Process
 printf " For observing the creation of the certificates: \n

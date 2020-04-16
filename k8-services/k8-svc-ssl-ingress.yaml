@@ -14,7 +14,6 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     # The name of our ClusterIssuer. We use ACME with 
     # HTTP solver
-    cert-manager.io/cluster-issuer: "letsencrypt"    
 spec:
   rules:
   - host: kubernetes.domain.placeholder
@@ -24,12 +23,6 @@ spec:
           serviceName: kubernetes-dashboard
           servicePort: 443
         path: /
-  # A valid key and certificate will be created for the entries belows
-  # with let's encrypt and the ACME protocol. https://letsencrypt.org/
-  tls:
-  - hosts:
-    - kubernetes.domain.placeholder
-    secretName: k8-svc-tls
 ---
 # TODO Fix broken links or access via API proxy
 apiVersion: networking.k8s.io/v1beta1
@@ -42,7 +35,6 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: "letsencrypt"    
 spec:
   rules:
   - host: grafana.domain.placeholder
@@ -52,10 +44,6 @@ spec:
           serviceName: monitoring-grafana
           servicePort: 80
         path: /
-  tls:
-  - hosts:
-    - grafana.domain.placeholder
-    secretName: grafana-tls
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress

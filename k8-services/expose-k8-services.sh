@@ -16,7 +16,7 @@ printf "\nSkip Login in K8 Dashboard \n"
 kubectl -n kube-system patch deployments kubernetes-dashboard --patch "$(cat skip-login-in-k8-dashboard-patch.yaml)"
 
 printf "\nExpose Kubernetes API, Grafana & Dashboard \n"
-cat k8-svc-ingress.yaml | \
+cat k8-svc-ssl-ingress.yaml | \
   sed 's~domain.placeholder~'"$DOMAIN"'~' > ./gen/k8-svc-ingress.yaml
 
 # Deploy ingress with rules to domains and ingress-gateway. Create secret and certificate

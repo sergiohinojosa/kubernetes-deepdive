@@ -49,5 +49,6 @@ spec:
   tls:
   - hosts:
     - domain.placeholder
-    - book.domain.placeholder
+    # no SSL certitificate  for book.
+    #- book.domain.placeholder
     secretName: domain-tls
