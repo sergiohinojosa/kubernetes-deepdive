@@ -1,2 +1,4 @@
 #Ignore generated files
 */gen/*
+# Ignore ds files
+.DS_Store
