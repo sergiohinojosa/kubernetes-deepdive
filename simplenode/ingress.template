@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tictactoe-ingress
+spec:
+  rules:
+  - host: simplenode.domain.placeholder
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: simplenode
+          servicePort: 8080
