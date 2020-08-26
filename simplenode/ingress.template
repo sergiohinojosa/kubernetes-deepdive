@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: tictactoe-ingress
+  name: simplenode-ingress
 spec:
   rules:
   - host: simplenode.domain.placeholder
