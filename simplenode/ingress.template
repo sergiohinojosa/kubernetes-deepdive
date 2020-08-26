@@ -11,3 +11,6 @@ spec:
         backend:
           serviceName: simplenode
           servicePort: 8080
+  tls:
+  - hosts:
+    - domain.placeholder
