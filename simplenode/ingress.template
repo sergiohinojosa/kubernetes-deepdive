@@ -6,6 +6,7 @@ metadata:
     # We allow HTTP and HTTPS
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
   name: simplenode-ingress
+  namespace: workshop
 spec:
   rules:
   - host: simplenode.domain.placeholder
