@@ -598,7 +598,7 @@ spec:
        runAsUser: 1001
       containers:
       - name: server
-        image: gcr.io/dynatrace-demoability/adservice:9e830c2
+        image: gcr.io/dynatrace-demoability/adservice:jdk11
         ports:
         - containerPort: 9555
         env:
