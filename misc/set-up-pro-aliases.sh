@@ -13,6 +13,7 @@ setupProAliases() {
       alias vaml='vi -c \"set syntax:yaml\" -' 
       alias vson='vi -c \"set syntax:json\" -' 
       alias pg='ps -aux | grep' " >/root/.bash_aliases
-    homedir=$(eval echo ~$USER)
-    cp /root/.bash_aliases $homedir/.bash_aliases
+    #homedir=$(eval echo ~$USER)
+    #cp /root/.bash_aliases $homedir/.bash_aliases
+    source /root/.bash_aliases
 }
