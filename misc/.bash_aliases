@@ -4,6 +4,6 @@
 alias las='ls -las' 
 alias hg='history | grep' 
 alias h='history' 
-alias vaml='vi -c \"set syntax:yaml\" -' 
-alias vson='vi -c \"set syntax:json\" -' 
+alias vaml='vi -c "set syntax:yaml" -' 
+alias vson='vi -c "set syntax:json" -' 
 alias pg='ps -aux | grep'
