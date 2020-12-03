@@ -4,7 +4,6 @@
 # can be highly customized.
 
 setupProAliases() {
-  if [ "$setup_proaliases" = true ]; then
     printInfoSection "Adding Bash and Kubectl Pro CLI aliases to .bash_aliases for user ubuntu and root "
     echo "
       # Alias for ease of use of the CLI
@@ -16,5 +15,4 @@ setupProAliases() {
       alias pg='ps -aux | grep' " >/root/.bash_aliases
     homedir=$(eval echo ~$USER)
     cp /root/.bash_aliases $homedir/.bash_aliases
-  fi
 }
