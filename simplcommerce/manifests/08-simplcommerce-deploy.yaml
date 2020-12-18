@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simplcommerce
+  name: simplcommerce
+  namespace: simplcommerce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simplcommerce
+  template:
+    metadata:
+      labels:
+        app: simplcommerce
+    spec:
+      containers:
+      - image: shinojosa/simplcommerce
+        name: simplcommerce
+        env:
+          - name: PGPASSWORD
+            value: "postgres"
+        ports:
+          - containerPort: 80
+          - containerPort: 443
+        command: ["/bin/sh"]
+        args: ["/docker-entrypoint.sh"]
+        imagePullPolicy: Always

@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  name: pgadmin-ingress
+spec:
+  rules:
+  - host: pgadmin.domain.placeholder
+    http:
+      paths:
+      - backend:
+          serviceName: pgadmin
+          servicePort: 80
+        path: /

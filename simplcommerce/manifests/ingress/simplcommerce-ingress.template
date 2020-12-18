@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  name: simplcommerce-ingress
+spec:
+  rules:
+  - host: simplcommerce.domain.placeholder
+    http:
+      paths:
+      - backend:
+          serviceName: simplcommerce
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - simplcommerce.domain.placeholder

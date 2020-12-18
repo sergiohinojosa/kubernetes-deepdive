@@ -1,0 +1,443 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+# pods "dynatrace-oneagent-webhook-7555978654-w949x" was not valid:
+# * spec: Forbidden: pod updates may not change fields other than `spec.containers[*].image`, `spec.initContainers[*].image`, `spec.activeDeadlineSeconds` or `spec.tolerations` (only additions to existing tolerations)
+#   core.PodSpec{
+#   	Volumes:        []core.Volume{{Name: "certs-volume", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}, {Name: "dynatrace-oneagent-webhook-token-x58mw", VolumeSource: core.VolumeSource{Secret: &core.SecretVolumeSource{SecretName: "dynatrace-oneagent-webhook-token-x58mw", DefaultMode: &420}}}},
+#   	InitContainers: nil,
+#   	Containers: []core.Container{
+#   		{
+#   			... // 6 identical fields
+#   			EnvFrom: nil,
+#   			Env:     []core.EnvVar{{Name: "WATCH_NAMESPACE", ValueFrom: &core.EnvVarSource{FieldRef: &core.ObjectFieldSelector{APIVersion: "v1", FieldPath: "metadata.namespace"}}}, {Name: "POD_NAME", ValueFrom: &core.EnvVarSource{FieldRef: &core.ObjectFieldSelector{APIVersion: "v1", FieldPath: "metadata.name"}}}},
+#   			Resources: core.ResourceRequirements{
+#   				Limits: core.ResourceList{
+# - 					"cpu":    {i: resource.int64Amount{value: 200, scale: -3}, s: "200m", Format: "DecimalSI"},
+# + 					"cpu":    {i: resource.int64Amount{value: 100, scale: -3}, s: "100m", Format: "DecimalSI"},
+# - 					"memory": {i: resource.int64Amount{value: 536870912}, Format: "BinarySI"},
+# + 					"memory": {i: resource.int64Amount{value: 268435456}, Format: "BinarySI"},
+#   				},
+#   				Requests: core.ResourceList{"cpu": {i: resource.int64Amount{value: 10, scale: -3}, s: "10m", Format: "DecimalSI"}, "memory": {i: resource.int64Amount{value: 67108864}, Format: "BinarySI"}},
+#   			},
+#   			VolumeMounts:  []core.VolumeMount{{Name: "certs-volume", MountPath: "/mnt/webhook-certs"}, {Name: "dynatrace-oneagent-webhook-token-x58mw", ReadOnly: true, MountPath: "/var/run/secrets/kubernetes.io/serviceaccount"}},
+#   			VolumeDevices: nil,
+#   			... // 11 identical fields
+#   		},
+#   		{Name: "bootstrapper", Image: "docker.io/dynatrace/dynatrace-oneagent-operator:v0.9.2", Args: []string{"webhook-bootstrapper"}, Ports: []core.ContainerPort{{Name: "metrics", ContainerPort: 8484, Protocol: "TCP"}}, Env: []core.EnvVar{{Name: "WATCH_NAMESPACE", ValueFrom: &core.EnvVarSource{FieldRef: &core.ObjectFieldSelector{APIVersion: "v1", FieldPath: "metadata.namespace"}}}, {Name: "POD_NAME", ValueFrom: &core.EnvVarSource{FieldRef: &core.ObjectFieldSelector{APIVersion: "v1", FieldPath: "metadata.name"}}}}, Resources: core.ResourceRequirements{Limits: core.ResourceList{"cpu": {i: resource.int64Amount{value: 100, scale: -3}, s: "100m", Format: "DecimalSI"}, "memory": {i: resource.int64Amount{value: 268435456}, Format: "BinarySI"}}, Requests: core.ResourceList{"cpu": {i: resource.int64Amount{value: 10, scale: -3}, s: "10m", Format: "DecimalSI"}, "memory": {i: resource.int64Amount{value: 67108864}, Format: "BinarySI"}}}, VolumeMounts: []core.VolumeMount{{Name: "certs-volume", MountPath: "/mnt/webhook-certs"}, {Name: "dynatrace-oneagent-webhook-token-x58mw", ReadOnly: true, MountPath: "/var/run/secrets/kubernetes.io/serviceaccount"}}, TerminationMessagePath: "/dev/termination-log", TerminationMessagePolicy: "File", ImagePullPolicy: "Always"},
+#   	},
+#   	EphemeralContainers: nil,
+#   	RestartPolicy:       "Always",
+#   	... // 24 identical fields
+#   }
+
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-12-10T09:31:06Z"
+  generateName: dynatrace-oneagent-webhook-7555978654-
+  labels:
+    dynatrace.com/operator: oneagent
+    internal.oneagent.dynatrace.com/app: webhook
+    internal.oneagent.dynatrace.com/component: webhook
+    pod-template-hash: "7555978654"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:dynatrace.com/operator: {}
+          f:internal.oneagent.dynatrace.com/app: {}
+          f:internal.oneagent.dynatrace.com/component: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"4897f099-aed1-4bb0-bfae-02e987a60fa6"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:affinity:
+          .: {}
+          f:nodeAffinity:
+            .: {}
+            f:requiredDuringSchedulingIgnoredDuringExecution:
+              .: {}
+              f:nodeSelectorTerms: {}
+        f:containers:
+          k:{"name":"bootstrapper"}:
+            .: {}
+            f:args: {}
+            f:env:
+              .: {}
+              k:{"name":"POD_NAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+              k:{"name":"WATCH_NAMESPACE"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":8484,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:name: {}
+                f:protocol: {}
+            f:resources:
+              .: {}
+              f:limits:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/mnt/webhook-certs"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+          k:{"name":"webhook"}:
+            .: {}
+            f:args: {}
+            f:env:
+              .: {}
+              k:{"name":"POD_NAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+              k:{"name":"WATCH_NAMESPACE"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":8383,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:name: {}
+                f:protocol: {}
+              k:{"containerPort":8443,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:name: {}
+                f:protocol: {}
+            f:readinessProbe:
+              .: {}
+              f:failureThreshold: {}
+              f:httpGet:
+                .: {}
+                f:path: {}
+                f:port: {}
+                f:scheme: {}
+              f:initialDelaySeconds: {}
+              f:periodSeconds: {}
+              f:successThreshold: {}
+              f:timeoutSeconds: {}
+            f:resources:
+              .: {}
+              f:limits:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/mnt/webhook-certs"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+        f:volumes:
+          .: {}
+          k:{"name":"certs-volume"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-12-10T09:31:06Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.1.94.63"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-12-10T09:33:05Z"
+  name: dynatrace-oneagent-webhook-7555978654-w949x
+  namespace: dynatrace
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: dynatrace-oneagent-webhook-7555978654
+    uid: 4897f099-aed1-4bb0-bfae-02e987a60fa6
+  resourceVersion: "2088851"
+  selfLink: /api/v1/namespaces/dynatrace/pods/dynatrace-oneagent-webhook-7555978654-w949x
+  uid: dadb362a-22a5-4f2f-b6bb-558561c20b4e
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: beta.kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+            - arm64
+          - key: beta.kubernetes.io/os
+            operator: In
+            values:
+            - linux
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+            - arm64
+          - key: kubernetes.io/os
+            operator: In
+            values:
+            - linux
+  containers:
+  - args:
+    - webhook-server
+    env:
+    - name: WATCH_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    image: docker.io/dynatrace/dynatrace-oneagent-operator:v0.9.2
+    imagePullPolicy: Always
+    name: webhook
+    ports:
+    - containerPort: 8383
+      name: metrics
+      protocol: TCP
+    - containerPort: 8443
+      name: server-port
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: server-port
+        scheme: HTTPS
+      initialDelaySeconds: 15
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: 200m
+        memory: 512Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /mnt/webhook-certs
+      name: certs-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: dynatrace-oneagent-webhook-token-x58mw
+      readOnly: true
+  - args:
+    - webhook-bootstrapper
+    env:
+    - name: WATCH_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    image: docker.io/dynatrace/dynatrace-oneagent-operator:v0.9.2
+    imagePullPolicy: Always
+    name: bootstrapper
+    ports:
+    - containerPort: 8484
+      name: metrics
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 100m
+        memory: 256Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /mnt/webhook-certs
+      name: certs-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: dynatrace-oneagent-webhook-token-x58mw
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-172-31-36-167
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: dynatrace-oneagent-webhook
+  serviceAccountName: dynatrace-oneagent-webhook
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir: {}
+    name: certs-volume
+  - name: dynatrace-oneagent-webhook-token-x58mw
+    secret:
+      defaultMode: 420
+      secretName: dynatrace-oneagent-webhook-token-x58mw
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-10T09:31:06Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-10T09:33:05Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-10T09:33:05Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-10T09:31:06Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://9393668feb6a07a298568da391292e0779bcdf4fc29e9f548fb8257267d55f13
+    image: docker.io/dynatrace/dynatrace-oneagent-operator:v0.9.2
+    imageID: docker.io/dynatrace/dynatrace-oneagent-operator@sha256:bf723aa0c020f98872f22550ddb452b27d8f30fb62b928daf768d7e044b1980a
+    lastState: {}
+    name: bootstrapper
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-12-10T09:31:10Z"
+  - containerID: containerd://da56ca223bc5b8b1ee176798797d46cd0a07f6e75fcd0a2869f2a68a2af4bc9b
+    image: docker.io/dynatrace/dynatrace-oneagent-operator:v0.9.2
+    imageID: docker.io/dynatrace/dynatrace-oneagent-operator@sha256:bf723aa0c020f98872f22550ddb452b27d8f30fb62b928daf768d7e044b1980a
+    lastState: {}
+    name: webhook
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-12-10T09:31:08Z"
+  hostIP: 172.31.36.167
+  phase: Running
+  podIP: 10.1.94.63
+  podIPs:
+  - ip: 10.1.94.63
+  qosClass: Burstable
+  startTime: "2020-12-10T09:31:06Z"

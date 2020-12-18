@@ -1,0 +1,8 @@
+#Ignoring generated files
+**/gen/*.yaml
+
+.DS_Store
+
+
+
+

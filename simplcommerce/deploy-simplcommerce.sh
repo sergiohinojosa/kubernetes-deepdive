@@ -10,14 +10,20 @@ else
    export DOMAIN="${PUBLIC_IP_AS_DOM}.nip.io"
 fi
 
-sed 's~domain.placeholder~'"$DOMAIN"'~'  ingress.template > manifests/ingress.yaml
 
 kubectl create ns simplcommerce
 
-# Create deployment of simplcommerce
-kubectl -n simplcommerce create deploy simplcommerce --image=simplcommerce/ci-build 
+# Create deployment of simplcommerce with sqlite db inside container.
+#kubectl -n simplcommerce create deploy simplcommerce --image=shinojosa/simplcommerce-coza
 
 # Expose deployment of simplcommerce
-kubectl -n simplcommerce expose deployment simplcommerce --type=NodePort --port=80 --name simplcommerce
+#kubectl -n simplcommerce expose deployment simplcommerce --type=NodePort --port=80 --name simplcommerce
 
 kubectl -n simplcommerce apply -f manifests/
+
+sed 's~domain.placeholder~'"$DOMAIN"'~'  manifests/ingress/pgadmin-ingress.template > manifests/ingress/pgadmin-ingress.yaml
+sed 's~domain.placeholder~'"$DOMAIN"'~'  manifests/ingress/simplcommerce-ingress.template > manifests/ingress/simplcommerce-ingress.yaml
+
+kubectl -n simplcommerce apply -f manifests/ingress/
+
+
