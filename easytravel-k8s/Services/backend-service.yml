@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: easytravel-backend
+  labels:
+    app: easytravel-k8s
+    type: backend
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: easytravel-k8s
+    type: backend-pod

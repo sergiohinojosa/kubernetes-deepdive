@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  CATALINA_OPTS: "-Dconfig.apmServerDefault=APM -Djava.security.egd=file:/dev/./urandom"
+  ET_DATABASE_LOCATION: "easytravel-mongodb:27017"

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: easytravel-k8s
+    type: frontend
+spec:
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: frontend-pod
+    spec:
+      containers:
+        - name: easytravel-frontend
+          image: shinojosa/easytravel-frontend
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: frontend-config
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: frontend-pod

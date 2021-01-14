@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadgen
+  labels:
+    app: easytravel-k8s
+    type: loadgen
+spec:
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: loadgen-pod
+    spec:
+      containers:
+        - name: easytravel-loadgen
+          image: shinojosa/easytravel-loadgen
+          envFrom:
+            - configMapRef:
+                name: loadgen-config
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: loadgen-pod

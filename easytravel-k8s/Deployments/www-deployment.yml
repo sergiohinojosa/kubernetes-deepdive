@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: www
+  labels:
+    app: easytravel-k8s
+    type: www
+spec:
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: www-pod
+    spec:
+      containers:
+        - name: www
+          image: shinojosa/easytravel-nginx
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: www-config
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: www-pod

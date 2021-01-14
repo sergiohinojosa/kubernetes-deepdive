@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: easytravel-mongodb
+  labels:
+    app: easytravel-k8s
+    type: mongodb
+spec:
+  ports:
+    - name: "27017"
+      port: 27017
+      protocol: TCP
+      targetPort: 27017
+    - name: "27018"
+      port: 27018
+      protocol: TCP
+      targetPort: 27018
+  selector:
+    app: easytravel-k8s
+    type: mongodb-pod

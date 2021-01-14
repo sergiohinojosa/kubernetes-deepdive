@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: www-config
+data:
+  ET_BACKEND_LOCATION: "easytravel-backend:8080"
+  ET_FRONTEND_LOCATION: "easytravel-frontend:8080"

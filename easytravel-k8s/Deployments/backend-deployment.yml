@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: easytravel-k8s
+    type: backend
+spec:
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: backend-pod
+    spec:
+      containers:
+        - name: easytravel-backend
+          image: shinojosa/easytravel-backend
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: backend-pod

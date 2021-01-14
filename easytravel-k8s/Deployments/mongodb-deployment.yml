@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app: easytravel-k8s
+    type:  mongodb
+  annotations:
+    k8s.annotations: This is an annotation
+spec:
+  template:
+    metadata:
+      labels:
+        app: easytravel-k8s
+        type: mongodb-pod
+    spec:
+      containers:
+        - name: easytravel-mongodb
+          image: shinojosa/easytravel-mongodb
+          ports:
+            - containerPort: 27017
+            - containerPort: 28017
+          envFrom:
+            - configMapRef:
+                name: mongodb-config
+  replicas: 1
+  selector:
+    matchLabels:
+      app: easytravel-k8s
+      type: mongodb-pod
