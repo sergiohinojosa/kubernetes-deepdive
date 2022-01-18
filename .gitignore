@@ -2,3 +2,6 @@
 */gen/*
 # Ignore ds files
 .DS_Store
+
+# Ignore my files underscore convention
+**_.**
