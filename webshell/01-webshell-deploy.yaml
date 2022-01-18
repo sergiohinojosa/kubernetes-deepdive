@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webshell
+  name:  webshell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webshell
+  template:
+    metadata:
+      labels:
+        app:  webshell
+    spec:
+      containers:
+        - image: bwsw/webshell
+          env:
+          - name: PATH
+            value: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          - name: SSH_PORT
+            value: "22"
+          - name: USERNAME
+            value: "root"
+          - name: DEFAULT_IP
+            value: "0.0.0.0"
+          - name: INACTIVITY_INTERVAL
+            value: "600"
+          - name: ALLOWED_NETWORKS
+            value: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7"
+          name: webshell
+          ports:
+            - containerPort: 80
+          command:
+            - "/opt/shellinabox.init"
+          args:
+            - "bin/sh"
+            - "-c"
+            - "#(nop) "
+            - "ENTRYPOINT [\"/opt/shellinabox.init\"]"
+          resources: {}

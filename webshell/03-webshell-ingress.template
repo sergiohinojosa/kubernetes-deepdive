@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  name: webshell-ingress
+spec:
+  rules:
+  - host: webshell.domain.placeholder
+    http:
+      paths:
+      - backend:
+          serviceName: webshell
+          servicePort: 8018
+        path: /
