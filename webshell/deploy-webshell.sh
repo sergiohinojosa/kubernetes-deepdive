@@ -9,8 +9,9 @@ kubectl create ns webshell
 export PUBLIC_IP=$(curl -s ifconfig.me) 
 PUBLIC_IP_AS_DOM=$(echo $PUBLIC_IP | sed 's~\.~-~g')
 export DOMAIN="${PUBLIC_IP_AS_DOM}.nip.io"
-sed 's~domain.placeholder~'"$DOMAIN"'~' 03-webshell-ingress-ssl.template > 03-webshell-ingress.yaml
+sed 's~domain.placeholder~'"$DOMAIN"'~' 03-webshell-ingress.template > 03-webshell-ingress.yaml
 
 kubectl -n webshell apply -f .
 echo "webshell service available at:"
 kubectl -n webshell get ing webshell-ingress
+
