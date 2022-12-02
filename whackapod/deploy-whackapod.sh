@@ -10,6 +10,6 @@ else
    export DOMAIN="${PUBLIC_IP_AS_DOM}.nip.io"
 fi
 
-sed 's~domain.placeholder~'"$DOMAIN"'~'  ingress.template > manifests/07-ingress.yaml
+sed 's~domain.placeholder~'"$DOMAIN"'~'  manifests/07-ingress.template > manifests/07-ingress.yaml
 
-kubectl apply -f manifests/
+kubectl -n whackapod apply -f manifests/
