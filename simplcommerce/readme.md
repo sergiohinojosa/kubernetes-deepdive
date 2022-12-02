@@ -1,5 +1,13 @@
 # The SimplCommerce NET Core App:
+The original repository can be found here:
 https://github.com/simplcommerce/SimplCommerce
+
+# SimplCommerce 
+![SimplCommerce](../imgs/simplcommerce.png)
+
+# PG Admin interface
+
+![PG Admin](../imgs/pgadmin.png)
 
 # Docker 
 ## Docker Compose with Simplcommerce, Postgres & PgAdmin 

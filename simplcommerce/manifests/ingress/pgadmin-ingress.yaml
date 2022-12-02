@@ -1,14 +1,33 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
   name: pgadmin-ingress
+  annotations:
+    kubernetes.io/ingress.class: public
+    # We allow HTTP and HTTPS
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # Instructs the controller to send TLS connections directly 
+    #to the backend instead of letting NGINX decrypt the communication
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # In some scenarios the exposed URL in the backend service differs
+    # from the specified path in the Ingress rule. Without a
+    # rewrite any request will return 404
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # The name of our ClusterIssuer. We use ACME with
+    # HTTP solver 
+    #cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:
-  - host: pgadmin.3-8-18-100.nip.io
+  - host: pgadmin.13-41-203-73.nip.io
     http:
       paths:
-      - backend:
-          serviceName: pgadmin
-          servicePort: 80
+      - pathType: Prefix
         path: /
+        backend:
+          service:
+            name: pgadmin
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - pgadmin.13-41-203-73.nip.io

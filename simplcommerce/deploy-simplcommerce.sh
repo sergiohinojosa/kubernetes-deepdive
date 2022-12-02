@@ -26,4 +26,7 @@ sed 's~domain.placeholder~'"$DOMAIN"'~'  manifests/ingress/simplcommerce-ingress
 
 kubectl -n simplcommerce apply -f manifests/ingress/
 
+echo "The application is available in the following endpoints"
+kubectl get ing -n simplcommerce
+
 
